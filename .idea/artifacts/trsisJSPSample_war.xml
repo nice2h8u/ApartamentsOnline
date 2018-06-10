@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="trsisJSPSample:war">
+    <output-path>$PROJECT_DIR$/target</output-path>
+    <root id="archive" name="trsisJSPSample.war">
+      <element id="artifact" artifact-name="trsisJSPSample:war exploded" />
+    </root>
+  </artifact>
+</component>
