@@ -20,13 +20,13 @@ public class Order {
     @Column(name = "order_name")
     private String order_name;
 
-    //@Temporal(TemporalType.DATE)
+    @Temporal(TemporalType.DATE)
     @Column(name = "order_date_begin")
-    private String order_date_begin;
+    private Date order_date_begin;
 
-   // @Temporal(TemporalType.DATE)
+    @Temporal(TemporalType.DATE)
     @Column(name = "order_date_end")
-    private String order_date_end;
+    private Date order_date_end;
 
 
     private Long order_cost;
@@ -47,7 +47,7 @@ public class Order {
 
     }
 
-    public Order(String order_name, String order_date_begin, String order_date_end, Long order_cost) {
+    public Order(String order_name, Date order_date_begin, Date order_date_end, Long order_cost) {
         this.order_name = order_name;
         this.order_date_begin = order_date_begin;
         this.order_date_end = order_date_end;
@@ -70,19 +70,19 @@ public class Order {
         this.order_name = order_name;
     }
 
-    public String getOrder_date_begin() {
+    public Date getOrder_date_begin() {
         return order_date_begin;
     }
 
-    public void setOrder_date_begin(String order_date_begin) {
+    public void setOrder_date_begin(Date order_date_begin) {
         this.order_date_begin = order_date_begin;
     }
 
-    public String getOrder_date_end() {
+    public Date getOrder_date_end() {
         return order_date_end;
     }
 
-    public void setOrder_date_end(String order_date_end) {
+    public void setOrder_date_end(Date order_date_end) {
         this.order_date_end = order_date_end;
     }
 

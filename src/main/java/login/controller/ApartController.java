@@ -58,7 +58,7 @@ public class ApartController implements IApartController {
     }
 
 //    @Override
-    public Set<Order> addOrder(String order_name,String order_date_begin, String order_date_end, Long order_cost, Integer id) { //TODO: make back for adding/deleting numer
+    public Set<Order> addOrder(String order_name,Date order_date_begin,Date order_date_end, Long order_cost, Integer id) { //TODO: make back for adding/deleting numer
 
 
         apartRepository.findByApartId(id).addOneOrder(orderRepository.save(new Order(order_name,order_date_begin,order_date_end,order_cost)));
