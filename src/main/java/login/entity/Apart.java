@@ -44,10 +44,7 @@ public class Apart {
     @JsonManagedReference
     private Set<Order> orderList = new HashSet<Order>();
 
-    @ManyToOne(targetEntity = User.class, fetch = FetchType.LAZY)
-    @JoinColumn(name = "user_id")
-    @JsonBackReference()
-    private User user;
+
 
 
 public Apart(){
@@ -156,13 +153,7 @@ public Apart(){
         this.orderList = orderList;
     }
 
-    public User getUser() {
-        return user;
-    }
 
-    public void setUser(User user) {
-        this.user = user;
-    }
 
     public void addOneOrder(Order order){
         orderList.add(order);

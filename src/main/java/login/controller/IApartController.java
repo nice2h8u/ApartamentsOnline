@@ -5,6 +5,7 @@ import login.entity.Apart;
 import login.entity.Order;
 
 
+import java.util.Date;
 import java.util.Set;
 
 public interface IApartController {
@@ -16,7 +17,7 @@ public interface IApartController {
     Apart add(Apart apart);
     Iterable<Order> listAllOrders();
     Set<Order> findOrdersByApartId(Integer id);
-   Set<Order> addOrder(String orderName,String order_date_begin,String order_date_end,Long order_cost, Integer id);
+   Set<Order> addOrder(String order_name, String order_date_begin, String order_date_end, Long order_cost, Integer id);
     void deleteOrder(Integer id);
 
 

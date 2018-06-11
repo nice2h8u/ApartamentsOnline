@@ -31,10 +31,7 @@ public class User {
     @JsonManagedReference
     private Set<Order> orderList = new HashSet<Order>();
 
-    @OneToMany(targetEntity = Apart.class, mappedBy = "user", fetch = FetchType.LAZY)
-    @OrderBy
-    @JsonManagedReference
-    private Set<Apart> appartrList = new HashSet<Apart>();
+
 
 //    public User(String login, String hash, Integer user_type) {
 //        this.login = login;
@@ -82,13 +79,7 @@ public class User {
         this.orderList = orderList;
     }
 
-    public Set<Apart> getAppartrList() {
-        return appartrList;
-    }
 
-    public void setAppartrList(Set<Apart> appartrList) {
-        this.appartrList = appartrList;
-    }
 
 
 }

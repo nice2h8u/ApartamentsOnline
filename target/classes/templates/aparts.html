@@ -59,16 +59,17 @@
                 <tbody>
                     <tr ng-repeat="apart in apartsList">
                         <!--<td>{{apart.apartId}}</td>-->
-                        <td>{{apart.name.first_name}}</td>
-                        <td>{{apart.name.cost}}</td>
-                        <td>{{apart.name.description}}</td>
-                        <td>{{apart.apart_phone_number}}</td>
+                        <td>{{apart.apart_name}}</td>
+                        <td>{{apart.apart_cost}}</td>
+                        <td>{{apart.apart_description}}</td>
+                        <td>{{apart.apart_phone}}</td>
                         <td>{{apart.apart_address}}</td>
-                        <td class="showMarks"> <input class="btn btn-info" type="submit" value="Выбрать номер" ng-click="getNumers(apart.apartId)"/> </td>
+                        <td class="showMarks"> <input class="btn btn-info" type="submit" value="Выбрать номер" ng-click="getOrders(apart.apartId)"/> </td>
 
                         <div sec:authorize="isAuthenticated()">
                             <td class="deleteApart"> <input class="btn btn-danger" type="submit" value="Удалить номер" ng-click="deleteApart(apart.apartId)"/> </td>
                         </div>
+
 
 
                     </tr>
@@ -113,27 +114,27 @@
                 </div>
             </form>
         </div>
-    <div ng-show="numerList.length > 0" class="panel panel-default numerAndMarkDiv">
+        <div ng-show="orderList.length > 0" class="panel panel-default orderAndMarkDiv">
 
-        <br/>
-        <table id="numerAndMarkTable" class="table">
-            <thead>
+            <br/>
+            <table id="orderAndMarkTable" class="table">
+                <thead>
                 <tr>
                     <th>Номер</th>
                     <th>Тэги</th>
                 </tr>
-            </thead>
-            <tbody>
-                <tr ng-repeat="numer in numerList">
-                    <td>{{numer.numer_name}}</td>
+                </thead>
+                <tbody>
+                <tr ng-repeat="order in orderList">
+                    <td>{{order.order_name}}</td>
                     <td>
                         <div ng-repeat="mark in numer.markList" style="display: inline-block; margin-left: 10px;">
                             {{ mark.value }}
 
                             <div sec:authorize="isAuthenticated()">
-                            <button class="btn btn-default btn-xs" type="submit" value="x" ng-click="deleteMark(mark.markId, numer.numerId)">
-                                <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
-                            </button>
+                                <button class="btn btn-default btn-xs" type="submit" value="x" ng-click="deleteMark(mark.markId, numer.numerId)">
+                                    <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                                </button>
                             </div>
 
                         </div>
@@ -156,24 +157,24 @@
                         </td>
                     </div>
                 </tr>
-            </tbody>
-        </table>
-    </div>
+                </tbody>
+            </table>
+        </div>
         <div sec:authorize="isAuthenticated()">
-        <div class="panel panel-default">
-            <div class="panel-heading">Добавить номер</div>
-            <form class="panel-body">
-                <div>
-                    <label >Название номера</label>
-                    <div class="input-group">
-                        <input class="form-control" id="numerName" type="text" name="numerName" ng-model="numerName" />
-                        <span class="input-group-btn">
+            <div class="panel panel-default">
+                <div class="panel-heading">Добавить номер</div>
+                <form class="panel-body">
+                    <div>
+                        <label >Название номера</label>
+                        <div class="input-group">
+                            <input class="form-control" id="numerName" type="text" name="numerName" ng-model="numerName" />
+                            <span class="input-group-btn">
                             <input class="btn btn-success" id="submitAddNumerButton" type="submit" value="Добавить" ng-click="addNumer(currentApartId, numerName)"/>
                         </span>
+                        </div>
                     </div>
-                </div>
-            </form>
-        </div>
+                </form>
+            </div>
         </div>
     </div>
     </body>

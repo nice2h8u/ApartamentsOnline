@@ -11,7 +11,7 @@ public class ControllersConfig extends WebMvcConfigurerAdapter {
     public void addViewControllers(ViewControllerRegistry registry) {
         
         registry.addViewController("/aparts").setViewName("aparts");
-        registry.addViewController("/apart/numers/").setViewName("apart/numers");
+        registry.addViewController("/apart/orders/").setViewName("apart/orders");
         registry.addViewController("/login").setViewName("login");
         registry.addViewController("/choose").setViewName("choose");
         registry.addViewController("/forbidden").setViewName("forbidden");

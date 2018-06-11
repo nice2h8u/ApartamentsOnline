@@ -2,13 +2,15 @@ package login.entity;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
+import org.omg.CORBA.DATA_CONVERSION;
 
 import javax.persistence.*;
+import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
 @Entity
-@Table(name = "Order")
+@Table(name = "Zak")
 public class Order {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -18,24 +20,32 @@ public class Order {
     @Column(name = "order_name")
     private String order_name;
 
+    //@Temporal(TemporalType.DATE)
     @Column(name = "order_date_begin")
     private String order_date_begin;
 
+   // @Temporal(TemporalType.DATE)
     @Column(name = "order_date_end")
     private String order_date_end;
 
 
     private Long order_cost;
 
+    @ManyToOne(targetEntity = Apart.class, fetch = FetchType.LAZY)
+    @JoinColumn(name = "apart_id")
+    @JsonBackReference()
+    private Apart apart;
+
     @ManyToOne(targetEntity = User.class, fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id")
-    //@JsonBackReference()
+    @JsonBackReference()
     private User user;
 
-    @ManyToOne(targetEntity = Apart.class, fetch = FetchType.LAZY)
-    @JoinColumn(name = "apartId")
-   // @JsonBackReference()
-    private Apart apart;
+
+
+    public  Order(){
+
+    }
 
     public Order(String order_name, String order_date_begin, String order_date_end, Long order_cost) {
         this.order_name = order_name;

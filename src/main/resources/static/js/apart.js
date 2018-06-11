@@ -3,7 +3,7 @@ var app = angular.module('aparts', []);
 app.controller("ApartController", function ($scope, $http) {
 
     $scope.currentApartId = 0;
-    $scope.currentNumerId = 0;
+    $scope.currentOrderId = 0;
     $scope.value = 0;
 
     $scope.getAparts = function () {
@@ -21,6 +21,7 @@ app.controller("ApartController", function ($scope, $http) {
 
     $scope.deleteApart = function (id) {
         $http.delete('/aparts/delete/' + id).success(function (data, status, headers, config) {
+            console.log(data);
             $scope.apartsList = $scope.apartsList.filter(function(apart) {
                 return apart.apartId !== id;
             });
@@ -52,10 +53,10 @@ app.controller("ApartController", function ($scope, $http) {
         });
     };
 
-    $scope.getNumers = function (id) {
-        $http.get('/apart/numers/' + id)
+    $scope.getOrders = function (id) {
+        $http.get('/apart/orders/' + id)
             .success(function (data, status, headers, config) {
-                $scope.numerList = data;
+                $scope.orderList = data;
                 $scope.currentApartId = id;
             })
             .error(function (data, status, headers, config) {
@@ -66,11 +67,11 @@ app.controller("ApartController", function ($scope, $http) {
     };
 
 
-    $scope.addNumer = function (id, numerName) {
-        console.log(id,numerName);
-        $http.post('/apart/numers/' +'addNumer/' + id + "/" + numerName)
+    $scope.addOrder = function (id, orderName) {
+        console.log(id,orderName);
+        $http.post('/apart/orders/' +'addOrder/' + id + "/" + orderName)
             .success(function (data, status, headers, config) {
-                $scope.numerList = data;
+                $scope.orderList = data;
                 console.log(data);
             })
             .error(function (data, status, headers, config) {
@@ -81,8 +82,8 @@ app.controller("ApartController", function ($scope, $http) {
             });
     };
 
-    $scope.deleteNumer = function (numerId) {
-        $http.delete('/apart/numers/delete/' + numerId).success(function (data, status, headers, config) {
+    $scope.deleteOrder = function (numerId) {
+        $http.delete('/apart/orders/delete/' + numerId).success(function (data, status, headers, config) {
             $scope.numerList = $scope.numerList.filter(function(numer) {
                 return numer.numerId !== numerId;
             });
@@ -96,49 +97,6 @@ app.controller("ApartController", function ($scope, $http) {
     };
 
 
-    $scope.deleteMark = function (mId, numId) {
-        $http.delete('/apart/marks/delete/' + mId)
-            .success(function () {
-                console.log($scope.numerList[numId-1]);
-                console.log(numId);
-                const numer = $scope.numerList[numId-1];
-                numer.markList = numer.markList.filter(function(mark) {
-                    return mark.markId !== mId;
-                });
-            })
-            .error(function (data, status, headers, config) {
-                console.log(data);
-                if (data.message === 'Time is out') {
-                    $scope.finishByTimeout();
-                }
-            });
-    };
 
-    $scope.addMark = function (value, numerId) {
-        console.log(value,numerId);
-        $http.post('/apart/numers/' +'addNumer/' + id + "/" + numerName)
-            .success(function (data, status, headers, config) {
-                $scope.numerList = data;
-                console.log(data);
-            })
-            .error(function (data, status, headers, config) {
-                console.log(data);
-                if (data.message === 'Time is out') {
-                    $scope.finishByTimeout();
-                }
-            });
-    };
-
-    $scope.addMark = function (numerId) {
-        console.log($scope.value,numerId);
-        $http.post('/apart/marks/add/' + $scope.value + "/" + numerId)
-            .success(function (data, status, headers, config) {
-            })
-            .error(function (data, status, headers, config) {;
-                if (data.message === 'Time is out') {
-                    $scope.finishByTimeout();
-                }
-            });
-    };
 
 });

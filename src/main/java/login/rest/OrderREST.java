@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import java.security.Principal;
 
 @RestController
-@RequestMapping("/apart/numers/")
+@RequestMapping("/apart/orders/")
 public class OrderREST {
 
     @Autowired
@@ -32,12 +32,12 @@ public class OrderREST {
 //        return ResponseEntity.ok(apartController.addOrder(numerName, id));
 //    }
 
-    @RequestMapping(value = "delete/{numerId}", method = RequestMethod.DELETE)
-    public void deleteNumer(@PathVariable(value = "numerId") Integer numerId,
+    @RequestMapping(value = "delete/{orderId}", method = RequestMethod.DELETE)
+    public void deleteOrder(@PathVariable(value = "orderId") Integer orderId,
                               @AuthenticationPrincipal Principal principal) {
         if (principal == null) {
             throw new ForbiddenException();
         }
-        apartController.deleteOrder(numerId);
+        apartController.deleteOrder(orderId);
     }
 }
