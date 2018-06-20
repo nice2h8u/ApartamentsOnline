@@ -19,16 +19,16 @@ public class ApartController implements IApartController {
     @Autowired
     private OrderRepository orderRepository;
 
-    private java.sql.Date begin =java.sql.Date.valueOf(LocalDate.of(2018,6,11));
-    private java.sql.Date end =java.sql.Date.valueOf(LocalDate.of(2018,6,13));
+   // private java.sql.Date begin =java.sql.Date.valueOf(LocalDate.of(2018,6,11));
+   // private java.sql.Date end =java.sql.Date.valueOf(LocalDate.of(2018,6,13));
 
     public Iterable<Apart> listAllAparts() {
         return apartRepository.findAll();
     }
-    public Iterable<Apart> listAvaliableAparts() {
-        System.out.println(begin);
-        System.out.println(end);
-        return apartRepository.getAparts(begin,end);
+    public Iterable<Apart> listAvaliableAparts(java.sql.Date date_begin, java.sql.Date date_end) {
+      //  System.out.println(begin);
+       // System.out.println(end);
+        return apartRepository.getAparts(date_begin,date_end);
     }
 
     public void deleteApart(Integer id) {
