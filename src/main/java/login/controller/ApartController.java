@@ -6,8 +6,10 @@ import login.repository.OrderRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.Date;
+
+import java.time.LocalDate;
 import java.util.Set;
+import java.util.Date;
 
 @Service
 public class ApartController implements IApartController {
@@ -17,12 +19,17 @@ public class ApartController implements IApartController {
     @Autowired
     private OrderRepository orderRepository;
 
-
+    private java.sql.Date begin =java.sql.Date.valueOf(LocalDate.of(2018,6,11));
+    private java.sql.Date end =java.sql.Date.valueOf(LocalDate.of(2018,6,13));
 
     public Iterable<Apart> listAllAparts() {
         return apartRepository.findAll();
     }
-
+    public Iterable<Apart> listAvaliableAparts() {
+        System.out.println(begin);
+        System.out.println(end);
+        return apartRepository.getAparts(begin,end);
+    }
 
     public void deleteApart(Integer id) {
 

@@ -16,6 +16,7 @@ public interface IApartController {
                 Integer apart_cost,String apart_description);
     Apart add(Apart apart);
     Iterable<Order> listAllOrders();
+    Iterable<Apart> listAvaliableAparts();
     Set<Order> findOrdersByApartId(Integer id);
    Set<Order> addOrder(String order_name, Date order_date_begin, Date order_date_end, Long order_cost, Integer id);
     void deleteOrder(Integer id);

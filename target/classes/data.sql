@@ -3,7 +3,7 @@ insert into apart(apart_name,apart_city, apart_address, apart_phone,  apart_x, a
   ('Europe','SPB','Nevskiy prospect, 78','2285992','32','324',4500,'Hotel at the middle of SPB');
 
 insert into apart(apart_name,apart_city, apart_address, apart_phone,  apart_x, apart_y, apart_cost, apart_description) VALUES
-  ('Hilton','SPB','Nevskiy prospect, 26','2282121','32','843',4300,'Greatesst Hotel of SPB');
+  ('Hilton','Moscow','Nevskiy prospect, 26','2282121','32','843',4300,'Greatesst Hotel of SPB');
 
 insert into apart(apart_name,apart_city, apart_address, apart_phone,  apart_x, apart_y, apart_cost, apart_description) VALUES
   ('Reddison','SPB','Sadovaya, 19','2282129','12','843',8300,'Luxure Hotel');

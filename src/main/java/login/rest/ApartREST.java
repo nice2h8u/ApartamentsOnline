@@ -7,6 +7,8 @@ package login.rest;
         import org.springframework.web.bind.annotation.*;
 
         import java.security.Principal;
+        import java.util.Date;
+
         import org.springframework.security.core.annotation.AuthenticationPrincipal;
 
 @RestController
@@ -14,6 +16,11 @@ package login.rest;
 public class ApartREST {
     @Autowired
     private login.controller.IApartController apartController;
+
+    @RequestMapping(value = "a", method = RequestMethod.GET)
+    public ResponseEntity<Object> getAparts() {
+        return ResponseEntity.ok(apartController.listAvaliableAparts());
+    }
 
     @RequestMapping(value = "", method = RequestMethod.GET)
     public ResponseEntity<Object> browse() {
