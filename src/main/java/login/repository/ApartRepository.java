@@ -15,6 +15,7 @@ public interface ApartRepository extends CrudRepository<Apart, Integer> {
     @Query(value="select * from apart\n" +
             "where apart_id not in \n" +
             "(select distinct zak.apart_id from university.zak\n" +
-            "where zak.order_date_begin between ?1 and ?2 )"  ,nativeQuery=true)
+            "where (zak.order_date_begin between ?1 and ?2 )" +
+            "or (zak.order_date_end between ?1 and ?2)) "  ,nativeQuery=true)
     Iterable<Apart> getAparts(Date date_begin,Date date_end );
 }

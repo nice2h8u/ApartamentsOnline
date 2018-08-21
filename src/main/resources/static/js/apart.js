@@ -22,7 +22,7 @@ app.controller("ApartController", function ($scope, $http) {
     $scope.deleteApart = function (id) {
         $http.delete('/aparts/delete/' + id).success(function (data, status, headers, config) {
             console.log(data);
-            $scope.apartsList = $scope.apartsList.filter(function(apart) {
+            $scope.apartsList = $scope.apartsList.filter(function (apart) {
                 return apart.apartId !== id;
             });
         }).error(function (data, status, headers, config) {
@@ -30,6 +30,23 @@ app.controller("ApartController", function ($scope, $http) {
             if (data.message === 'Time is out') {
                 $scope.finishByTimeout();
             }
+        });
+    };
+
+    $scope.getApartList = function () {
+
+        const temp = {
+            date_begin: $scope.date_begin,
+            date_end: $scope.date_end
+        }
+
+        $http.post('/aparts/a', temp)
+            .success(function (data, status, headers, config) {
+                    $scope.apartsList = data;
+
+                }
+            ).error(function (data, status, headers, config) {
+            console.log(status, data, headers);
         });
     };
 
@@ -66,10 +83,23 @@ app.controller("ApartController", function ($scope, $http) {
             });
     };
 
+    $scope.getOrders = function (id) {
+        $http.get('/apart/orders/' + id)
+            .success(function (data, status, headers, config) {
+                $scope.orderList = data;
+                $scope.currentApartId = id;
+            })
+            .error(function (data, status, headers, config) {
+                if (data.message === 'Time is out') {
+                    $scope.finishByTimeout();
+                }
+            });
+    };
+
 
     $scope.addOrder = function (id, orderName) {
-        console.log(id,orderName);
-        $http.post('/apart/orders/' +'addOrder/' + id + "/" + orderName)
+        console.log(id, orderName);
+        $http.post('/apart/orders/' + 'addOrder/' + id + "/" + orderName)
             .success(function (data, status, headers, config) {
                 $scope.orderList = data;
                 console.log(data);
@@ -84,7 +114,7 @@ app.controller("ApartController", function ($scope, $http) {
 
     $scope.deleteOrder = function (numerId) {
         $http.delete('/apart/orders/delete/' + numerId).success(function (data, status, headers, config) {
-            $scope.numerList = $scope.numerList.filter(function(numer) {
+            $scope.numerList = $scope.numerList.filter(function (numer) {
                 return numer.numerId !== numerId;
             });
             console.log($scope.numerList);
@@ -95,8 +125,6 @@ app.controller("ApartController", function ($scope, $http) {
             }
         });
     };
-
-
 
 
 });

@@ -42,7 +42,24 @@
     </nav>
     <div class="container">
         <h1>Отели</h1>
+        <form role="form" ng-submit="getApartList()" >
+            <div>
+                <label>Дата начала</label>
+                <div>
+                    <input class="form-control" id="date_begin" type="date" name="date_begin" ng-model="date_begin" />
+                </div>
+            </div>
+            <div>
+                <label>Дата конца</label>
+                <div>
+                    <input class="form-control" id="date_end" type="date" name="date_end" ng-model="date_end" />
+                </div>
+            </div>
 
+            <div>
+                <input class="form-control" id="submitGetButton" type="submit" value="Найти отель"/>
+            </div>
+        </form>
         <div ng-controller="getAparts" ng-show="apartsList.length > 0" class="panel panel-default">
             <div class="panel-heading">Список отелей</div>
             <table id="Apart" class="table">

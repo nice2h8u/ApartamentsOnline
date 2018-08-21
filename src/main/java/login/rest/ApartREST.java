@@ -1,6 +1,7 @@
 package login.rest;
 
         import login.entity.Apart;
+        import login.rest.Entity.FilterPar;
         import org.springframework.beans.factory.annotation.Autowired;
         import org.springframework.format.annotation.DateTimeFormat;
         import org.springframework.http.MediaType;
@@ -10,21 +11,24 @@ package login.rest;
         import java.security.Principal;
         import java.sql.Date;
         import java.time.LocalDate;
+        import java.util.logging.Filter;
 
 
         import org.springframework.security.core.annotation.AuthenticationPrincipal;
+
 
 @RestController
 @RequestMapping("/aparts/")
 public class ApartREST {
     @Autowired
     private login.controller.IApartController apartController;
+
+
+
 //http://localhost:8080/aparts/a?date_begin=2018-06-10&date_end=2018-06-11
-    @RequestMapping(value = "a", method = RequestMethod.GET)
-    public ResponseEntity<Object> getAparts(@RequestParam("date_begin")@DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate date_begin,
-                                            @RequestParam("date_end")@DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate date_end) {
-        return ResponseEntity.ok(apartController.listAvaliableAparts(new Date(0,0,0).valueOf(LocalDate.of(date_begin.getYear(),date_begin.getMonth(),date_begin.getDayOfMonth())),
-                new Date(0,0,0).valueOf(LocalDate.of(date_end.getYear(),date_end.getMonth(),date_end.getDayOfMonth()))));
+    @RequestMapping(value = "find_available_aparts", method = RequestMethod.POST,consumes = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<Object> getApartList(@RequestBody FilterPar filterPar) {
+            return ResponseEntity.ok(apartController.listAvaliableAparts(filterPar.getDate_begin(),filterPar.getDate_end()));
     }
 
     @RequestMapping(value = "", method = RequestMethod.GET)
