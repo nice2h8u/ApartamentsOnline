@@ -1,4 +1,7 @@
-insert into user(login, hash,user_type) values ('user','$2a$04$qzvZPxjlKJbJqqIx4Wo66uFX16w3b.mQ6GV8GW86QDRKEHbvNqUYW',1);
+insert into user(login, hash,user_type,email) values
+  ('admin','$2a$04$qzvZPxjlKJbJqqIx4Wo66uFX16w3b.mQ6GV8GW86QDRKEHbvNqUYW','ADMIN','nice2h8u@gmail.com');
+insert into user(login, hash,user_type,email) values
+  ('user','$2a$04$qzvZPxjlKJbJqqIx4Wo66uFX16w3b.mQ6GV8GW86QDRKEHbvNqUYW','USER','owesterg@gmail.com');
 insert into apart(apart_name,apart_city, apart_address, apart_phone,  apart_x, apart_y, apart_cost, apart_description) VALUES
   ('Europe','SPB','Nevskiy prospect, 78','2285992','32','324',4500,'Hotel at the middle of SPB');
 

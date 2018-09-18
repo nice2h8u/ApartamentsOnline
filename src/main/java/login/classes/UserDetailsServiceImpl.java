@@ -7,12 +7,13 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 @Service
-public class LoggedUserDetailsService implements UserDetailsService {
-
-    private final LoginService userService;
+public class UserDetailsServiceImpl implements UserDetailsService {
 
     @Autowired
-    public LoggedUserDetailsService(LoginService userService) {
+    private  LoginService userService;
+
+    @Autowired
+    public UserDetailsServiceImpl(LoginService userService) {
         this.userService = userService;
     }
 
@@ -25,5 +26,7 @@ public class LoggedUserDetailsService implements UserDetailsService {
             throw new UsernameNotFoundException("Invalid user " + login);
         }
     }
+
+
 
 }

@@ -1,10 +1,11 @@
 package login.entity;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
+import org.hibernate.validator.constraints.Length;
+
 import javax.persistence.*;
-import javax.persistence.criteria.CriteriaBuilder;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -17,6 +18,7 @@ public class User {
     @Column(name = "user_id", nullable = false, updatable = false)
     private Integer user_id;
 
+    @Length(min = 5,max = 20, message = "*Your login must have at least 5 or not more then 20 characters")
     @Column(nullable = false)
     private String login;
 
@@ -24,7 +26,11 @@ public class User {
     private String hash;
 
     @Column(nullable = false)
-    private Integer user_type;
+    private String user_type;
+
+
+    @Column(nullable = false)
+    private String email;
 
     @OneToMany(targetEntity = Order.class, mappedBy = "user", fetch = FetchType.LAZY)
     @OrderBy
@@ -33,11 +39,16 @@ public class User {
 
 
 
-//    public User(String login, String hash, Integer user_type) {
-//        this.login = login;
-//        this.hash = hash;
-//        this.user_type = user_type;
-//    }
+   public User() {
+
+   }
+
+    public User(String login, String hash, String user_type, String email) {
+        this.login = login;
+        this.hash = hash;
+        this.user_type = user_type;
+        this.email = email;
+    }
 
     public Integer getUser_id() {
         return user_id;
@@ -63,11 +74,11 @@ public class User {
         this.hash = hash;
     }
 
-    public Integer getUser_type() {
+    public String getUser_type() {
         return user_type;
     }
 
-    public void setUser_type(Integer user_type) {
+    public void setUser_type(String user_type) {
         this.user_type = user_type;
     }
 
@@ -79,7 +90,11 @@ public class User {
         this.orderList = orderList;
     }
 
+    public String getEmail() {
+        return email;
+    }
 
-
-
+    public void setEmail(String email) {
+        this.email = email;
+    }
 }

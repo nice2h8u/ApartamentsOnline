@@ -37,10 +37,13 @@ app.controller("ApartController", function ($scope, $http) {
 
         const temp = {
             date_begin: $scope.date_begin,
-            date_end: $scope.date_end
+            date_end: $scope.date_end,
+            apart_cost:parseInt($scope.apart_cost),
+            apart_city:$scope.apart_city
         }
-
-        $http.post('/aparts/a', temp)
+        console.log(temp.cost);
+        console.log(temp.city);
+        $http.post('/aparts/find_available_aparts', temp)
             .success(function (data, status, headers, config) {
                     $scope.apartsList = data;
 

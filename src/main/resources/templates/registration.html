@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"></meta>
+    <title>Registration</title>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"/>
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous"/>
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.3/angular.min.js"></script>
+    <script src="js/registration.js"></script>
+
+</head>
+<body ng-app="registration" ng-controller="LoginServiceImpl">
+
+<nav class="navbar navbar-default">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">Онлайн бронирование номеров</a>
+        </div>
+
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav">
+                <li class="active"><a href="#">Отели <span class="sr-only">(current)</span></a></li>
+                <li sec:authorize="isAnonymous()"><a href="/login">Login</a></li>
+                <li sec:authorize="isAuthenticated()"><a href="/login?logout">Logout</a></li>
+                <li sec:authorize="isAnonymous()"><a href='/registration' />Registration</li>
+            </ul>
+        </div>
+    </div><!-- /.container-fluid -->
+</nav>
+
+<div class="container">
+    <h1>Регистрация</h1>
+    <form role="form" ng-submit="createNewUser()">
+        <div>
+            <label>Login</label>
+            <div>
+                <input class="form-control" id="login" type="text" name="login" ng-model="login"/>
+            </div>
+        </div>
+        <div>
+            <label>Password</label>
+            <div>
+                <input class="form-control" id="hash" type="password" name="hash" ng-model="hash"/>
+            </div>
+        </div>
+
+        <div>
+            <label>Email </label>
+            <div>
+                <input class="form-control" id="email" type="text" name="email" ng-model="email"/>
+            </div>
+        </div>
+
+         <div>
+            <input class="form-control" id="submitRegistrationButton" type="submit" value=""/>
+        </div>
+    </form>
+</div>
+
+
+</body>
+</html>
