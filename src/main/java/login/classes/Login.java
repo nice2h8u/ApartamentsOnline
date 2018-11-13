@@ -6,7 +6,6 @@ import org.springframework.security.core.authority.AuthorityUtils;
 public class Login extends org.springframework.security.core.userdetails.User {
 
     private static final long serialVersionUID = 1L;
-    private int temp;
     private User user;
 
     public Login(User user) {
