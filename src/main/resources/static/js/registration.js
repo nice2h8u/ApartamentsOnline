@@ -18,7 +18,7 @@ app.controller("LoginServiceImpl", function ($scope, $http) {
         $http.post('/registration/', user)
             .success(function (data, status, headers, config) {
                     console.log("Registration sucessfull");
-                window.location.href = '/login';
+                window.location.href = '/aparts';
 
                 }
             ).error(function (data, status, headers, config) {
