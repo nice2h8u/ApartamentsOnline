@@ -30,7 +30,6 @@ public class LoginServiceImpl implements LoginService {
 
     public User findUserByEmail(String email) {
         User login = userRepository.findByEmail(email);
-
         return login;
     }
 
@@ -40,6 +39,8 @@ public class LoginServiceImpl implements LoginService {
         return    userRepository.save(new User(user.getLogin(),bCryptPasswordEncoder.encode(user.getHash()),
                 "USER",user.getEmail()));
     }
+
+
 
 
 

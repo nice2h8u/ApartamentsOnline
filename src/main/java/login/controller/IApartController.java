@@ -14,7 +14,7 @@ public interface IApartController {
     Iterable<Apart> listAllAparts();
     void deleteApart(Integer id);
     Apart add(String apart_name, String apart_city, String apart_address, String apart_phone, String apart_x, String apart_y,
-              Integer apart_cost,String apart_description);
+              Integer apart_cost,String apart_description, String apart_image_url);
     Apart add(Apart apart);
     Iterable<Order> listAllOrders();
     Iterable<Apart> listAvaliableAparts(java.sql.Date date_begin, java.sql.Date date_end,Integer apart_cost, String apart_city);

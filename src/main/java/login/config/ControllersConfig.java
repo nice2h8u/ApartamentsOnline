@@ -16,6 +16,7 @@ public class ControllersConfig extends WebMvcConfigurerAdapter {
         registry.addViewController("/choose").setViewName("choose");
         registry.addViewController("/forbidden").setViewName("forbidden");
         registry.addViewController("/error").setViewName("error");
+        registry.addViewController("/get_apparts/").setViewName("get_apparts");
         registry.addViewController("/registration").setViewName("registration");
         registry.addViewController("/").setViewName("aparts");
 

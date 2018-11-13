@@ -44,6 +44,7 @@ public class TomcatConfig {
                 securityConstraint.setUserConstraint("CONFIDENTIAL");
                 SecurityCollection collection = new SecurityCollection();
                 collection.addPattern("/login");
+                collection.addPattern("/registration");
                 securityConstraint.addCollection(collection);
                 context.addConstraint(securityConstraint);
             }

@@ -17,14 +17,14 @@ app.controller("LoginServiceImpl", function ($scope, $http) {
 
         $http.post('/registration/', user)
             .success(function (data, status, headers, config) {
-                console.log("Registration sucessfull");
+                    console.log("Registration sucessfull");
+                window.location.href = '/login';
 
                 }
             ).error(function (data, status, headers, config) {
             console.log(status, data, headers);
         });
     };
-
 
 
 });

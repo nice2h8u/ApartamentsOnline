@@ -33,10 +33,10 @@
 
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
-                <li class="active"><a href="#">Отели <span class="sr-only">(current)</span></a></li>
-                <li sec:authorize="isAnonymous()"><a href="/login">Login</a></li>
+                <li><a href="/">Отели</a></li>
+                <li  sec:authorize="isAnonymous()"><a href="/login">Login</a></li>
                 <li sec:authorize="isAuthenticated()"><a href="/login?logout">Logout</a></li>
-                <li sec:authorize="isAnonymous()"><a href='/registration' />Registration</li>
+                <li class="active" sec:authorize="isAnonymous()"><a href='/registration'>Registration<span class="sr-only">(current)</span></a></li>
             </ul>
         </div>
     </div><!-- /.container-fluid -->

@@ -19,4 +19,7 @@ public interface ApartRepository extends CrudRepository<Apart, Integer> {
             "or (zak.order_date_end between ?1 and ?2))) and" +
             "(apart.apart_cost < ?3) and (apart.apart_city = ?4)"  ,nativeQuery=true)
     Iterable<Apart> getAparts(Date date_begin,Date date_end,Integer apart_cost, String apart_city );
+
+    @Query(value="select * from apart" ,nativeQuery=true)
+    Iterable<Apart> getAllApparts();
 }

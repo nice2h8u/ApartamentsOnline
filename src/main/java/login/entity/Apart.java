@@ -1,11 +1,9 @@
 package login.entity;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import javax.persistence.*;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -39,6 +37,9 @@ public class Apart {
     @Column(name = "apart_description", nullable = false)
     private String apart_description;
 
+    @Column(name = "apart_image_url", nullable = false)
+    private String apart_image_url;
+
     @OneToMany(targetEntity = Order.class, mappedBy = "apart", fetch = FetchType.LAZY) //mapped - имя поля в ордерс
     @OrderBy
     @JsonManagedReference
@@ -51,7 +52,7 @@ public Apart(){
 
 }
     public Apart(String apart_name, String apart_city, String apart_address, String apart_phone, String apart_x, String apart_y,
-                Integer apart_cost,String apart_description) {
+                Integer apart_cost,String apart_description,String apart_image_url){
         this.apart_name = apart_name;
         this.apart_city = apart_city;
         this.apart_address = apart_address;
@@ -60,6 +61,7 @@ public Apart(){
         this.apart_y = apart_y;
         this.apart_cost = apart_cost;
         this.apart_description = apart_description;
+        this.apart_image_url = apart_image_url;
     }
     public Apart(Apart apart) {
         this.apart_name = apart.getApart_name();
@@ -70,8 +72,16 @@ public Apart(){
         this.apart_y = apart.getApart_y();
         this.apart_cost = apart.getApart_cost();
         this.apart_description = apart.getApart_description();
+        this.apart_image_url = apart.getApart_image_url();
     }
 
+    public String getApart_image_url() {
+        return apart_image_url;
+    }
+
+    public void setApart_image_url(String apart_image_url) {
+        this.apart_image_url = apart_image_url;
+    }
 
     public String getApart_name() {
         return apart_name;

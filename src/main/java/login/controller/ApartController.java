@@ -1,5 +1,7 @@
 package login.controller;
 
+import com.google.gson.JsonArray;
+import com.google.gson.JsonObject;
 import login.entity.*;
 import login.repository.ApartRepository;
 import login.repository.OrderRepository;
@@ -22,9 +24,11 @@ public class ApartController implements IApartController {
     private OrderRepository orderRepository;
 
 
-    public Iterable<Apart> listAllAparts() {
-        return apartRepository.findAll();
-    }
+
+public Iterable<Apart> listAllAparts() {
+    return apartRepository.getAllApparts();
+}
+
     public Iterable<Apart> listAvaliableAparts(java.sql.Date date_begin, java.sql.Date date_end,Integer apart_cost, String apart_city) {
 
         return apartRepository.getAparts(date_begin,date_end,apart_cost,apart_city);
@@ -38,16 +42,16 @@ public class ApartController implements IApartController {
 
 
     public Apart add(String apart_name, String apart_city, String apart_address, String apart_phone, String apart_x, String apart_y,
-                     Integer apart_cost,String apart_description) {
+                     Integer apart_cost,String apart_description, String apart_image_url) {
 
         return apartRepository.save(new Apart(apart_name,apart_city,apart_address, apart_phone, apart_x, apart_y,
-                apart_cost, apart_description));
+                apart_cost, apart_description,apart_image_url));
     }
 
     public Apart add(Apart apart) {
 
         return apartRepository.save(new Apart(apart.getApart_name(),apart.getApart_city(),apart.getApart_address(), apart.getApart_phone(), apart.getApart_x(),
-                apart.getApart_y(), apart.getApart_cost(), apart.getApart_description()));
+                apart.getApart_y(), apart.getApart_cost(), apart.getApart_description(), apart.getApart_image_url()));
     }
 
 

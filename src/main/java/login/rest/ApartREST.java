@@ -1,20 +1,26 @@
 package login.rest;
 
+        import com.fasterxml.jackson.databind.util.JSONPObject;
+        import com.google.gson.JsonObject;
+        import login.classes.Login;
         import login.classes.LoginService;
         import login.classes.LoginServiceImpl;
         import login.entity.Apart;
         import login.entity.User;
         import login.rest.Entity.FilterPar;
         import login.rest.Entity.FilterUser;
+
         import org.springframework.beans.factory.annotation.Autowired;
         import org.springframework.format.annotation.DateTimeFormat;
         import org.springframework.http.MediaType;
         import org.springframework.http.ResponseEntity;
+        import org.springframework.security.core.Authentication;
         import org.springframework.web.bind.annotation.*;
 
         import java.security.Principal;
         import java.sql.Date;
         import java.time.LocalDate;
+        import java.util.List;
         import java.util.logging.Filter;
 
 
@@ -40,11 +46,12 @@ public ResponseEntity<Object> getApartList(@RequestBody FilterPar filterPar) {
             filterPar.getApart_cost(),filterPar.getApart_city()));
 }
 
+
     @RequestMapping(value = "", method = RequestMethod.GET)
-    public ResponseEntity<Object> browse() {
+    public Iterable<Apart> browse() {
 
 
-        return ResponseEntity.ok(apartController.listAllAparts());
+        return apartController.listAllAparts();
     }
 
     @RequestMapping(value = "add/", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
@@ -52,6 +59,7 @@ public ResponseEntity<Object> getApartList(@RequestBody FilterPar filterPar) {
         if (principal == null) {
             throw new ForbiddenException();
         }
+        Login login= (Login)(((Authentication) principal).getPrincipal());
         return ResponseEntity.ok(apartController.add(apart));
     }
 
