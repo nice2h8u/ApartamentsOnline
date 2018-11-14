@@ -1,0 +1,38 @@
+@import url('https://fonts.googleapis.com/css?family=Indie+Flower');
+
+html,body{
+    height: 100%;
+}
+
+
+
+#login-form{
+
+    background: #f1f8e9;
+}
+
+header{
+    height: 100%;
+    min-height: 50%;
+}
+#top-login{
+    height: 100%;
+    background: url("../img/login-background.jpg");
+    -webkit-background-size: cover;
+    background-size: cover;
+}
+
+h1,h2,h3,h4,h5,h6{
+    font-family: "Indie+Flower";
+}
+
+#bottom{
+    background: url("../img/bottom.jpg");
+    -webkit-background-size: cover;
+    background-size: cover;
+    height: 100%;
+}
+
+footer{
+    height: 50%;
+}

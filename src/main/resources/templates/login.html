@@ -1,97 +1,134 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
       xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
-    <head>
-        <title>LogIn page</title>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
 
-        <!-- Latest compiled and minified CSS -->
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"/>
+    <title>Aparts Booking</title>
 
-        <!-- Optional theme -->
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous"/>
 
-        <!-- Latest compiled and minified JavaScript -->
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- Bootstrap core CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Material Design Bootstrap -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.5.14/css/mdb.min.css" rel="stylesheet">
+    <!-- Your custom styles (optional) -->
+    <link href="css/style-login.css" rel="stylesheet"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.3/angular.min.js"></script>
+    <!-- JQuery -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <!-- Bootstrap tooltips -->
+    <script type="text/javascript"
+            src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.4/umd/popper.min.js"></script>
+    <!-- Bootstrap core JavaScript -->
+    <script type="text/javascript"
+            src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/js/bootstrap.min.js"></script>
+    <!-- MDB core JavaScript -->
+    <script type="text/javascript"
+            src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.5.14/js/mdb.min.js"></script>
 
-    </head>
-    <body>
-    <nav class="navbar navbar-default">
-        <div class="container-fluid">
-            <!-- Brand and toggle get grouped for better mobile display -->
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand" href="#">Онлайн бронирование отелей</a>
-            </div>
 
-            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                <ul class="nav navbar-nav">
-                    <li><a href="/">Отели</a></li>
-                    <li class="active" sec:authorize="isAnonymous()"><a href="/login">Login<span class="sr-only">(current)</span></a></li>
-                    <li sec:authorize="isAuthenticated()"><a href="/login?logout">Logout</a></li>
-                    <li sec:authorize="isAnonymous()"><a href='/registration'>Registration</a></li>
+</head>
+<body>
+
+<header>
+
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top scrolling-navbar">
+        <div class="container">
+
+            <a href="#" class="navbar-left"><img src="img/logo.png"></a>
+
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#basicExampleNav"
+                    aria-controls="basicExampleNav" aria-expanded="false" aria-label="Toggle Navigation">
+                <span class="navbar-toggler-icon">
+
+                 </span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="basicExampleNav">
+                <ul class="navbar-nav mr-auto smooth-scroll ">
+                    <li class="nav-item ">
+                        <a href="/aparts" class="nav-link waves-effect waves-light "> Home</a>
+                    </li>
+                    <li sec:authorize="isAnonymous()" class="nav-item active">
+                        <a href="/login" class="nav-link waves-effect waves-light">Login</a>
+                    </li>
+                    <li sec:authorize="isAuthenticated()" class="nav-item">
+                        <a href="/login?logout" class="nav-link waves-effect waves-light">LogOut</a>
+                    </li>
+                    <li sec:authorize="isAnonymous()" class="nav-item">
+                        <a href="/registration" class="nav-link waves-effect waves-light">Registration</a>
+                    </li>
+                </ul>
+
+
+                <ul class="navbar-nav nav-flex-icons">
+
+                    <li class="nav-item">
+                        <a href="" class="nav-link waves-light waves-effect">
+                            <i class="fa fa-youtube"></i>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="" class="nav-link waves-light waves-effect">
+                            <i class="fa fa-youtube"></i>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="" class="nav-link waves-light waves-effect">
+                            <i class="fa fa-youtube"></i>
+                        </a>
+                    </li>
                 </ul>
             </div>
-        </div><!-- /.container-fluid -->
-    </nav>
-        <div class="container">
-            <center>
-                <h2 class="form-signin-heading">Вход в систему</h2>
-            </center>
-            <form th:action="@{/login}" method="post" class="form-signin">
-                <div th:if="${param.error}" class="alert alert-danger" role="alert">
-                    <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
-                    <span class="sr-only">Error:</span>
-                    Неверный логин или пароль.
-                </div>
-                <p th:if="${param.logout}"></p>
 
-                <p><input class="form-control" type="text" id="login" name="login" placeholder="Login"/></p>
-                <p><input class="form-control" type="password" id="password" name="pass" placeholder="Password"/></p>
-                <p><input class="btn btn-lg btn-primary btn-block" type="submit" id="submitLoginButton" value="LogIn"/></p>
-            </form>
         </div>
 
-    <style>
-        .form-signin {
-            max-width: 330px;
-            padding: 15px;
-            margin: 0 auto;
-        }
-        .form-signin .form-signin-heading,
-        .form-signin .checkbox {
-            margin-bottom: 10px;
-        }
-        .form-signin .checkbox {
-            font-weight: normal;
-        }
-        .form-signin .form-control {
-            position: relative;
-            height: auto;
-            -webkit-box-sizing: border-box;
-            -moz-box-sizing: border-box;
-            box-sizing: border-box;
-            padding: 10px;
-            font-size: 16px;
-        }
-        .form-signin .form-control:focus {
-            z-index: 2;
-        }
-        .form-signin input[type="email"] {
-            margin-bottom: -1px;
-            border-bottom-right-radius: 0;
-            border-bottom-left-radius: 0;
-        }
-        .form-signin input[type="password"] {
-            margin-bottom: 10px;
-            border-top-left-radius: 0;
-            border-top-right-radius: 0;
-        }
+    </nav>
 
-    </style>
-    </body>
+
+    <div id="top-login" class="view">
+        <div class="mask rgba-black-strong "> <!--rgba-black-strong-->
+            <div class="row justify-content-center align-items-center h-100">
+                <div class="col col-sm-6 col-md-6 col-lg-4 col-xl-3" id="login-form">
+                    <form th:action="@{/login}" method="post" class=" justify-content-center  text-center">
+
+                        <div th:if="${param.error}" class="alert alert-danger" role="alert">
+                            <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+                            <span class="sr-only">Error:</span>
+                            Неверный логин или пароль.
+                        </div>
+                        <p th:if="${param.logout}"></p>
+
+                        <div class="form-group">
+                            <p><input class="form-control" type="text" id="login" name="login" placeholder="Login"/></p>
+                        </div>
+
+                        <div class="form-group">
+                            <p><input class="form-control" type="password" id="password" name="pass"
+                                      placeholder="Password"/></p>
+                        </div>
+
+
+                        <p><input class="btn btn-light" type="submit" id="submitLoginButton"
+                                  value="LogIn"/>
+                        </p>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</header>
+
+
+</body>
+
 </html>
+
+
+<!---->
