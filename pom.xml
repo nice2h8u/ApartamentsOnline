@@ -2,11 +2,11 @@
          xmlns:context="http://www.springframework.org/schema/context"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <groupId>info.stepanoff.trsis.samples.jsp</groupId>
-    <artifactId>trsisJSPSample</artifactId>
+    <groupId>com.nicetoh8u</groupId>
+    <artifactId>ApartsBooking</artifactId>
     <packaging>war</packaging>
     <version>1.0-SNAPSHOT</version>
-    <name>trsisJSPSample Maven Webapp Lecture 6 - security</name>
+    <name>Aparts Booking client-server app</name>
     <url>http://maven.apache.org</url>
 
 
@@ -82,7 +82,7 @@
 
     </dependencies>
     <build>
-        <finalName>trsisJSPSample</finalName>
+        <finalName>ApartsBooking</finalName>
 
         <plugins>
             <plugin>

@@ -38,7 +38,7 @@ public class ApartREST {
 
 
 
-//http://localhost:8080/aparts/a?date_begin=2018-06-10&date_end=2018-06-11
+
 @RequestMapping(value = "find_available_aparts", method = RequestMethod.POST,consumes = MediaType.APPLICATION_JSON_VALUE)
 public ResponseEntity<Object> getApartList(@RequestBody FilterPar filterPar) {
     System.out.println(filterPar.getDate_begin()+" "+filterPar.getApart_cost()+"  "+filterPar.getApart_city());
