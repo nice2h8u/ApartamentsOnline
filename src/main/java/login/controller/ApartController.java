@@ -41,12 +41,12 @@ public Iterable<Apart> listAllAparts() {
     }
 
 
-    public Apart add(String apart_name, String apart_city, String apart_address, String apart_phone, String apart_x, String apart_y,
+  /*  public Apart add(String apart_name, String apart_city, String apart_address, String apart_phone, String apart_x, String apart_y,
                      Integer apart_cost,String apart_description, String apart_image_url) {
 
         return apartRepository.save(new Apart(apart_name,apart_city,apart_address, apart_phone, apart_x, apart_y,
                 apart_cost, apart_description,apart_image_url));
-    }
+    }*/
 
     public Apart add(Apart apart) {
 

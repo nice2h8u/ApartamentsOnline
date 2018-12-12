@@ -55,11 +55,17 @@ app.controller("ApartController", function ($scope, $http) {
 
     $scope.addAparts = function () {
         const values = {
-            firstName: $scope.firstName,
-            cost: $scope.cost,
-            description: $scope.description,
-            phone: $scope.phone,
-            address: $scope.address
+
+            apart_name:'ligov',
+            apart_city:'spb',
+            apart_address:'ligovskiy 24',
+            apart_phone:'893131',
+            apart_x:'10',
+            apart_y:'10',
+            apart_cost:'1000',
+            apart_description:'goood',
+            apart_image_url:'http'
+
         };
 
         console.log('values:', values);

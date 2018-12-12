@@ -1,31 +1,49 @@
 @import url('https://fonts.googleapis.com/css?family=Indie+Flower');
 
-html,body,#intro{
+html, body, #intro {
     height: 100%;
 
 }
 
-header{
+title {
+    font-family: "Indie+Flower";
+}
+
+header {
     height: 70%;
     min-height: 50%;
 }
-#intro{
+
+#intro {
     background: url("../img/header.jpg");
     -webkit-background-size: cover;
     background-size: cover;
 }
 
-h1,h2,h3,h4,h5,h6{
+h1, h2, h3, h4, h5, h6 {
     font-family: "Indie+Flower";
 }
 
-#bottom{
+#bottom {
+
     background: url("../img/bottom.jpg");
     -webkit-background-size: cover;
     background-size: cover;
     height: 100%;
 }
 
-footer{
+#bottom-text {
+    display: flex;
+    align-items: flex-end;
+    vertical-align: middle;
+
+    text-align: center;
+}
+
+footer {
     height: 50%;
+}
+
+.align-items-center {
+    justify-content: center;
 }

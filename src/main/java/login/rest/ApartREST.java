@@ -7,6 +7,7 @@ package login.rest;
         import login.classes.LoginServiceImpl;
         import login.entity.Apart;
         import login.entity.User;
+        import login.rest.Entity.FilterApart;
         import login.rest.Entity.FilterPar;
         import login.rest.Entity.FilterUser;
 
@@ -55,10 +56,14 @@ public ResponseEntity<Object> getApartList(@RequestBody FilterPar filterPar) {
     }
 
     @RequestMapping(value = "add/", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<Object> add(@RequestBody Apart apart, @AuthenticationPrincipal Principal principal) {
+    public ResponseEntity<Object> add(@RequestBody FilterApart f, @AuthenticationPrincipal Principal principal) {
         if (principal == null) {
             throw new ForbiddenException();
         }
+        Apart apart = new Apart(f.getApart_name(),
+                f.getApart_city(),f.getApart_address(),f.getApart_phone(),
+                f.getApart_x(),f.getApart_y(),f.getApart_cost(),f.getApart_description(),f.getApart_image_url());
+
         Login login= (Login)(((Authentication) principal).getPrincipal());
         return ResponseEntity.ok(apartController.add(apart));
     }
